@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-6 mx-auto my-5 ">
+    <div class="card border-info p-5">
+        <div class=" h4 alert alert-success text-center" role="alert">User Registration page</div>
+        <form action="." method="post" enctype="multipart/form-data" name="reg_form" onsubmit="return validateForm()">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleusername" class="form-label">Username</label>
+              <input type="text" class="form-control" name="username" id="exampleusername" aria-describedby="emailHelp" required/>
+            </div>
+            <div class="mb-3">
+                <label for="examplefirstname" class="form-label">First Name</label>
+                <input type="text" class="form-control" name="first_name" id="examplefirstname" aria-describedby="emailHelp" required>
+              </div>
+            <div class="mb-3">
+              <label for="exampleInputlastname" class="form-label">Last Name</label>
+              <input type="text" class="form-control" name="last_name" id="exampleInputlastname" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" id="exampleInputEmail" required>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPhone" class="form-label">Phone No</label>
+                <input type="tel" class="form-control" name="phone" id="exampleInputPhone" required>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputAge" class="form-label">Age</label>
+                <input type="number" class="form-control" name="age" id="exampleInputAge" required/>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputAge" class="form-label">Gender</label>
+                <input type="text" class="form-control" name="gender" id="exampleInputgender" required/>
+              </div>
+              <!-- <div class="mb-3">
+                <label for="exampleInputAge" class="form-label">Gender</label>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Select
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">Male</a>
+                      <a class="dropdown-item" href="#">Female</a>
+                      <a class="dropdown-item" href="#">Others</a>
+                    </div>
+                  </div>
+              </div> -->
+              <div class="mb-3">
+                <label for="exampleInputProfile" class="form-label">id proof</label>
+                <input type="file" class="form-control" name="idproof" id="exampleInputProfile">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="exampleInputPassword">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" name="password1" id="exampleInputPassword1">
+              </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+    </div>
+</div>
+
+<!-- <script>
+  function validateForm() {
+    var x = document.reg_form.email.value;
+    var y = document.reg_form.password.value;
+    var email = document.getElementById('exampleInputEmail');
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (x == "") {
+      document.getElementById("exampleInputEmail1").style.border = "2px solid red";
+      document.getElementById("user").innerHTML="**enter user id";
+       return false; -->
+
+
+
+
+{% endblock content %}

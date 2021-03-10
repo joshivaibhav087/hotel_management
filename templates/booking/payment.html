@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-6 mx-auto ">
+    <div class="card border-info p-5 mt-3" style="border-width:10px; border-radius:20px">
+        <div class=" h4 alert alert-success text-center" role="alert">Your Order Details</div>
+        <div class="card-text h4 bg-success">checkin:{{ book.checkin_date }}</div>
+        <div class="card-text h4 bg-info">checkout:{{ book.checkout_date }}</div>
+        <div class="card-text h4 bg-success">Bed Type:{{ book.bed_type }}</div>
+        <div class="card-text h4 bg-info">Room Type:{{ book.room_type }}</div>
+        <div class="card-text h4 bg-success">Food:{{ book.food }}</div>
+        <div class="card-text h4 bg-info">Total Amount:{{ book.amount }}</div>
+          
+        </p>
+        <a href="{% url 'booking:booking' %}" class="btn btn-info">back</a>
+    
+
+
+    </div>
+    </div>
+
+<div class="col-6 mx-auto my-3">
+    <div class="card border-info p-5">
+        <div class=" h4 alert alert-success text-center" role="alert">Payment Page</div>
+        <form action="." method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleusername" class="form-label">payment mode</label>
+              <select name="mode" id="mode">
+                <option>select</option>
+                <option value="Cash">Cash</option>
+                <option value="Online">Online</option>
+                <!-- <option value="price3">red</option> -->
+            </select>
+              <input type="text" class="form-control" name="checkin" id="examplemode" aria-describedby="emailHelp" onclick="func()"readonly required/>
+            </div>
+            <div id="hide">
+            <div class="mb-3">
+                <label for="exampleusername" class="form-label">Card Number</label>
+                <input type="number" class="form-control" name="card" id="examplecheckin" aria-describedby="emailHelp" required/>
+              </div>
+              <div class="mb-3">
+                <label for="exampleusername" class="form-label">IFSC</label>
+                <input type="text" class="form-control" name="ifsc" id="examplecheckin" aria-describedby="emailHelp" required/>
+              </div>
+              <div class="mb-3">
+                <label for="exampleusername" class="form-label">CVV</label>
+                <input type="number" class="form-control" name="cvv" id="examplecheckin" aria-describedby="emailHelp" required/>
+              </div>
+              <div class="mb-3">
+                <label for="exampleusername" class="form-label">Card Holder Name</label>
+                <input type="text" class="form-control" name="nam" id="examplname" aria-describedby="emailHelp" required/>
+              </div>
+              <!-- <div class="mb-3"> -->
+                <!-- <label for="exampleusername" class="form-label"> total amount:</label> -->
+                <div class="totalamount">Total Amount:{{ booking1.amount }}</div>
+                <!-- <input type="text" class="form-control" name="booking" id="examplname" aria-describedby="emailHelp" required/> -->
+              <!-- </div> -->
+              </div>
+              <button type="submit" class="btn btn-primary">Make Payment</button>
+
+              <script>
+                var select = document.getElementById('mode');
+                var input = document.getElementById('examplemode');
+                var y = document.getElementById("hide");
+                select.onchange = function() {
+                    input.value = select.value;
+                    if (select.value == "Online"){
+                        y.style.display = "block";
+                    }
+                    else{
+                        y.style.display = "none"
+                    }
+                }
+
+                
+                
+                </script>
+
+{% endblock content %}

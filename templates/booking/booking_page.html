@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-6 mx-auto my-5 ">
+    <div class="card border-info p-5">
+        <div class=" h4 alert alert-success text-center" role="alert">Booking Page</div>
+        <form action="." method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleusername" class="form-label">chcekin date</label>
+              <input type="date" class="form-control" name="checkin" id="examplecheckin" aria-describedby="emailHelp" required/>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleusername" class="form-label">check out date</label>
+                <input type="date" class="form-control" name="checkout" id="examplecheckout" aria-describedby="emailHelp" required/>
+              </div>
+
+              <div class="mb-3">
+                <!-- <label for="cmbitems1" class="form-label">bed type</label> -->
+                <select name="cmbitems1" id="cmbitems1" class="btn btn-secondary btn-sm dropdown-toggle">
+                    <option>select bed_type</option>
+                    <option value="single_bed">singlebed</option>
+                    <option value="Double_bed">doublebed</option>
+                    <!-- <option value="price3">red</option> -->
+                </select></div>
+                <div class="mb-3">
+                <input type="text"class= "form-control" placeholder="Bed Type" name="bed_type" id="txtprice" onClick="checkPrice1()" readonly>
+                
+                <!-- <input type="text" class="form-control" name="username" id="exampleusername" aria-describedby="emailHelp" required/> -->
+              </div>
+
+              <div class="mb-3">
+                <!-- <label for="cmbitems2" class="form-label">room type</label> -->
+                <select name="cmbitems2" id="cmbitems2" class="btn btn-secondary btn-sm dropdown-toggle">
+                    <option>select room_type</option>
+                    <option value='non-A/C'>non-A/C</option>
+                    <option value='A/C'>A/C</option>
+                    <!-- <option value="price3">red</option> -->
+                </select>
+                </div>
+                <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Room Type" name="room_type" id="rmtyp" onClick="checkPrice2()" readonly>
+                <!-- <input type="text" class="form-control" name="username" id="exampleusername" aria-describedby="emailHelp" required/> -->
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleusername" class="form-label">guests</label>
+                <input type="number" class="form-control" name="guest" id="exampleguest" aria-describedby="emailHelp" required/>
+              </div>
+              <div class="mb-3">
+                <!-- <label for="cmbitems3" class="form-label">Food</label> -->
+                <select name="cmbitems3" id="cmbitems3" class="btn btn-secondary btn-sm dropdown-toggle">
+                    <option>select Food</option>
+                    <option value="want">want</option>
+                    <option value="not_selected">dontwant</option>
+                    <!-- <option value="price3">red</option> -->
+                </select></div>
+                
+                <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Food" name="food" id="food1" onClick="checkPrice3()" readonly>
+                
+                <!-- <input type="number" class="form-control" name="guest" id="exampleguest" aria-describedby="emailHelp" required/> -->
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleamount" class="form-label">total amount</label>
+                <input type="number" class="form-control" name="amount1" id="exampleamount" aria-describedby="emailHelp" readonly>
+              </div>
+              <input type="submit" class="btn btn-primary" value="proceed to payment">
+              </form>
+
+<script>
+    var select = document.getElementById('cmbitems1');
+    var input = document.getElementById('txtprice');
+    select.onchange = function() {
+    if (select.value == 'single_bed'){
+      input.value = 500;
+    }
+    else{
+      input.value = 1000;
+    }
+    }
+    var select2 = document.getElementById('cmbitems2');
+    var input2 = document.getElementById('rmtyp');
+    select2.onchange = function(){
+      if (select2.value == 'non-A/C'){
+        input2.value = 200;
+      }
+      else{
+        input2.value = 500;
+      }
+
+    }
+    var select3 = document.getElementById('cmbitems3');
+    var input3 = document.getElementById('food1');
+    var input4 = document.getElementById('exampleamount');
+    select3.onchange = function(){
+      if (select3.value == 'want'){
+        input3.value = 200;
+      }
+      else{
+        input3.value = 0;
+      }
+    input4.value = Number(input3.value) + Number(input2.value) + Number(input.value);
+
+    }
+    
+
+    
+    
+</script>
+{% endblock content %}

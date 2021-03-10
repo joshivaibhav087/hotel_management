@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card text-center">
+    <div class="card-header">
+      STAR HOTEL
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Your Booking Confirmed</h5>
+      <div class="card-text">checkin:{{ confirm.checkin_date }}</div>
+        <div class="card-text">checkout:{{ confirm.checkout_date }}</div>
+        <div class="card-text">Bed Type:{{ confirm.bed_type }}</div>
+        <div class="card-text">Room Type:{{ confirm.room_type }}</div>
+        <div class="card-text">Food:{{ confirm.food }}</div>
+        <div class="card-text">Total Amount:{{ confirm.amount }}</div>
+        <p class="card-text">Please carry your id proof with you</p>
+      <a href="{% url 'booking:booking' %}" class="btn btn-primary">Home</a>
+    </div>
+    <div class="card-footer text-muted">
+      Thank You
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+{% endblock content %}

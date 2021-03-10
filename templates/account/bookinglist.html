@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 style="text-align: center;">Booking List</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">customer</th>
+        <th scope="col">checkin date</th>
+        <th scope="col">checkout date</th>
+        <th scope="col">Bed Type</th>
+        <th scope="col">Room Type</th>
+        <th scope="col">Guests</th>
+        <th scope="col">Food</th>
+        <th scope="col">Amount Paid</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for b in booking %}
+      <tr>
+        <th scope="row">1</th>
+        <td>{{b.user}}</td>
+        <td>{{b.checkin_date}}</td>
+        <td>{{b.checkout_date}}</td>
+        <td>{{b.bed_type}}</td>
+        <td>{{b.room_type}}</td>
+        <td>{{b.guest}}</td>
+        <td>{{b.food}}</td>
+        <td>{{b.amount}}</td>
+      </tr>
+{% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}

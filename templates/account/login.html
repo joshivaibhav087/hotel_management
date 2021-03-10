@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="col-6 mx-auto my-5 ">
+        <div class="card border-info p-5">
+            <div class=" h4 alert alert-success text-center" role="alert">Login page</div>
+            <form action="." method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">User Name</label>
+        <input type="text" class="form-control" name="username" id="formGroupExampleInput" placeholder="User name">
+    </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Password</label>
+        <input type="text" class="form-control" name="password" id="formGroupExampleInput2" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary">login</button>
+      </form>
+      </div>
+      </div>
+
+{% endblock content %}
