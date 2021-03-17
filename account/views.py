@@ -12,7 +12,7 @@ def register_view(request):
             username = request.POST['username']
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
-            email = request.POST['email']
+            email = request.POST['email1']
             phone = request.POST['phone']
             age = request.POST['age']
             gender = request.POST['gender']
@@ -20,7 +20,15 @@ def register_view(request):
             password = request.POST['password']
             password1 = request.POST['password1']
 
-            user = User.objects.create_user(username = username, first_name = first_name, last_name =last_name, email = email, password = password)
+            try:
+                user = User.objects.get(username=username)
+                return redirect("/account/register/")
+
+                user = User.objects.create_user(username = username, first_name = first_name, last_name = last_name, email = email, password = password)
+                user.save()
+            except:
+                pass
+            user = User.objects.create_user(username = username, first_name = first_name, last_name = last_name, email = email, password = password)
             user.save()
             account = Account(user=user, age = age, phone = phone, id_proof = id_prof, gender = gender)
             account.save()
